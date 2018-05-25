@@ -55,7 +55,7 @@ members.addEventListener('click', function(e) {
 
     // TODO: Somehow isolate the last chunk of the GitHub profile URL, which contains the username
     // https://github.com/<username>. The full URL is a string at `e.target.href`:
-    username = '';
+    username = e.target.href.substr(e.target.href.lastIndexOf('/') + 1);
 
     // Diagnostic: log the username value
     console.log('Username value:', username);
