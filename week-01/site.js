@@ -93,13 +93,13 @@ members.addEventListener('click', function(e) {
         avatar.setAttribute("src", profile_json.avatar_url);
         repo.textContent = profile_json.public_repos;
 
-        profile.appendChild(node);
-
         // TODO: Display the username (`login`) in case a team member has not set a profile name
         if(profile_json.name === null)
         {
           name.textContent = profile_json.login;
         }
+
+        profile.appendChild(node);
       });
   }
 });
