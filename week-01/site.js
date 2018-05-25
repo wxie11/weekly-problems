@@ -90,7 +90,7 @@ members.addEventListener('click', function(e) {
         var repo = node.querySelector('#public_repos');
 
         name.textContent = profile_json.name;
-        avatar.innerHTML += "src= \"" + profile_json.avatar_url + "\"";
+        avatar.setAttribute("src", profile_json.avatar_url);
         repo.textContent = profile_json.public_repos;
 
         profile.appendChild(node);
