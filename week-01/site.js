@@ -82,6 +82,14 @@ members.addEventListener('click', function(e) {
         // Diagnostic; output the login value
         console.log('Login', profile_json.login);
 
+        if(profile.hasChildNodes())
+        {
+          while(profile.hasChildNodes())
+          {
+            profile.removeChild(profile.firstChild);
+          }
+        }
+
         // TODO: Insert the parts of the JSON data we want in the `template` HTML and
         // append it to the profile `<blockquote id="profile">`
         var node = document.importNode(template.content, true);
