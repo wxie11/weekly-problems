@@ -47,7 +47,7 @@ members.addEventListener('click', function(e) {
   target = e.target;
 
   // We're only interested in clicks on `<a>` elements:
-  if (e.target.nodeName.toLowerCase() == 'a') {
+  if (e.target.nodeName.toLowerCase() === 'a') {
     // Don't let the web browser follow the link
     e.preventDefault();
     // Diagnostic: log the clicked `<a>` element's `href` value
@@ -79,6 +79,14 @@ members.addEventListener('click', function(e) {
         return data.json();
       })
       .then(function(profile_json) {
+
+        // TODO: Insert the parts of the JSON data we want in the `template` HTML and
+        // append it to the profile `<blockquote id="profile">`
+        var node = document.importNode(template.content, true);
+        var name = node.querySelector('#name');
+        var avatar = node.querySelector('#avatar_url');
+        var repo = node.querySelector('#public_repos');
+
         // Diagnostic; output the login value
         console.log('Login', profile_json.login);
 
@@ -89,13 +97,6 @@ members.addEventListener('click', function(e) {
             profile.removeChild(profile.firstChild);
           }
         }
-
-        // TODO: Insert the parts of the JSON data we want in the `template` HTML and
-        // append it to the profile `<blockquote id="profile">`
-        var node = document.importNode(template.content, true);
-        var name = node.querySelector('#name');
-        var avatar = node.querySelector('#avatar_url');
-        var repo = node.querySelector('#public_repos');
 
         name.textContent = profile_json.name;
         avatar.setAttribute("src", profile_json.avatar_url);
