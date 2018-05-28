@@ -98,7 +98,6 @@ members.addEventListener('click', function(e) {
           }
         }
 
-        name.textContent = profile_json.name;
         avatar.setAttribute("src", profile_json.avatar_url);
         repo.textContent = profile_json.public_repos;
 
@@ -106,6 +105,9 @@ members.addEventListener('click', function(e) {
         if(profile_json.name === null)
         {
           name.textContent = profile_json.login;
+        }
+        else {
+            name.textContent = profile_json.name;
         }
 
         profile.appendChild(node);
